@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh; /* Use 100% of the viewport height */
+            margin: 0; /* Remove default body margin */
+            padding: 10px; /* Reduced padding for spacing */
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(21, 29, 32, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        }
+
+        #content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 0.1; /* Allow content to grow and take remaining space */
+            margin-bottom: 10px; /* Reduced margin between text area and buttons */
+          
+            padding: 10px; /* Add some padding for better visibility */
+            border-radius: 5px; /* Optional: Add rounded corners */
+        }
+
+        #speechInput {
+            color: rgb(255, 255, 255); /* Semi-transparent black for text color */
+            width: 600px;
+            height: 300px;
+            background-color: transparent; /* Transparent background for the textarea */
+            border: 2px solid white;  /* Remove border */
+            resize: none; /* Disable resizing */
+            padding: 10px; /* Add padding */
+            font-size: 16px; /* Set font size */
+            font-family: Arial, sans-serif; /* Set font family */
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1000px; /* Add margin between text area and buttons */
+        }
+
+        #mic-icon {
+            width: 30px; /* Adjust the width of the mic icon */
+            height: 30px; /* Adjust the height of the mic icon */
+            margin-right: 5px; /* Add margin to separate the mic icon from the buttons */
+        }
+
+        #buttons button {
+            margin: 0 5px; /* Reduced margin between buttons */
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <textarea id="speechInput" placeholder="Spoken text will appear here" style="width: 600px; height: 300px;"></textarea>
+    </div>
+    <div id="buttons">
+        <img id="mic-icon" src="images/mic.svg">
+        <button id="startButton">Start</button>
+        <button type="submit" id="submitButton">Submit</button><br>
+        <span><a href="index.php"><h4 style="color: white;">Back</h4></a></span>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+    <script>
+        const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("39728fbcb5384d9d944f09f4eb489c07", "eastus");
+        const recognizer = new SpeechSDK.SpeechRecognizer(speechConfig);
+
+        document.getElementById("startButton").addEventListener("click", () => {
+            recognizer.startContinuousRecognitionAsync();
+        });
+
+        document.getElementById("submitButton").addEventListener("click", () => {
+            alert("Your precious feedback has been sent!");
+        });
+
+        recognizer.recognizing = (s, e) => {
+            document.getElementById("speechInput").value = e.result.text;
+        };
+
+        recognizer.recognized = (s, e) => {
+            if (e.result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {
+                document.getElementById("speechInput").value = e.result.text;
+            }
+        };
+
+        recognizer.canceled = (s, e) => {
+            if (e.reason === SpeechSDK.CancellationReason.Error) {
+                console.error(`Cancellation error: ${e.errorDetails}`);
+            }
+        };
+    </script>
+</body>
+</html>

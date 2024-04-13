@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Payment method</title>
+    <style>
+       body {
+    margin: 500px; /* Add back the margin */
+    margin-top: 50px; /* Add back the top margin */
+    border: 3px solid rgb(255, 255, 255); /* Add back the border */
+    background-image: url(images/paymentbg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fix the background image */
+     
+    text-align: center;
+    overflow-x: hidden; /* Hide vertical scrollbar */
+}
+
+
+        .container {
+            height: 80vh; /* Set container height to full viewport height */
+            overflow-y: auto; /* Enable vertical scrolling for container */
+            padding: 90px; /* Add padding to center content */
+            box-sizing: border-box; /* Include padding in height calculation */
+            background-color: aliceblue;
+            
+        }
+
+        h1 {
+            background-color:green;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 1px;
+            font-size: 20px;
+        }
+
+        button {
+            align-items: center;
+            border-radius: 125px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 5px;
+            color:white;
+            background-color: green;
+        }
+
+        .message-overlay {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the overlay */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    border-radius: 10px;
+    display: none;
+    z-index: 999; /* Ensure the overlay is on top of other elements */
+}
+
+.message {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px; /* Set the font size to 14px */
+    max-width: 80%; /* Limit the width of the message box */
+    text-align: center; /* Center the text horizontally */
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 0; /* Remove the large margin */
+        overflow-x: hidden; /* Hide vertical scrollbar */
+    }
+
+    .container {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .message-overlay {
+        background-color: white; /* Set background color to white */
+    }
+
+    .message {
+        max-height: 50vh; /* Reduce the max-height of the message box */
+        overflow-x: hidden; /* Enable vertical scrolling if message content exceeds max-height */
+    }
+
+    button {
+        padding: 8px; /* Adjust button padding for smaller screens */
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment method</h1>
+        <form id="payment-form" action="/process_payment" method="post">
+            <label for="name">Name of Card:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" required>
+            
+            <label for="expiration-date">Expiration Date:</label>
+            <input type="text" id="expiration-date" name="expiration-date" placeholder="MM/YY" required>
+            
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+            <br>
+            <br>
+            
+            <button type="button" onclick="showMessage()">Submit Payment</button>
+        </form>
+        <a href="index.php">back to homepage</a>
+    </div>
+
+    <div class="message-overlay" id="messageOverlay">
+        <div class="message">
+            <span style="font-size: 40px; color: green;"> payment is successful back to home page &#10004;</span>
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById("messageOverlay").style.display = "flex";
+            setTimeout(function() {
+                document.getElementById("messageOverlay").style.display = "none";
+            }, 2000); // Hide after 2 seconds (2000 milliseconds)
+        }
+    </script>
+</body>
+</html>

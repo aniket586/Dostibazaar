@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+.pro-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .pro-container>div {
+        flex: 1 1 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pro1 img,
+    .pro2 img,
+    .pro3 img {
+        display: block;
+        width: 100%;
+        height: 400px;
+        /* Set the height to your desired size */
+        object-fit: cover;
+        padding: 10px 12px;
+        border: 5px solid #cce7d0;
+        border-radius: 150px;
+        cursor: pointer;
+        box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+        margin-bottom: 20px;
+        margin-right: 20px;
+        /* Add space between images */
+    }
+
+    /* Remove margin-right for the last image in each row */
+    .pro1:nth-child(3n) img,
+    .pro2:nth-child(3n) img,
+    .pro3:nth-child(3n) img {
+        margin-right: 0;
+    }
+
+    /* Adjust margin-top for the sixth image in each row */
+    .pro1:nth-child(6n) img,
+    .pro2:nth-child(6n) img,
+    .pro3:nth-child(6n) img {
+        margin-top: 20px;
+        /* Add margin-top to align with the top row */
+    }
+
+    .section-p1 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* Adjust column width as needed */
+        gap: 90px;
+        /* Add the desired gap between grid items */
+    }
+
+    /* Reverse the order of items in one column */
+    .section-p1>div:nth-child(3n+2) {
+        order: -1;
+    }
+
+    div h5 {
+        margin: 0%;
+        padding: 0%;
+    }
+
+    div h4 {
+        margin: 0%;
+        padding: 0%;
+    }
+
+    div h1 {
+        margin: 0%;
+        padding: 0%;
+    }
+
+    button {
+  align-items: center;
+  border-radius: 100px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#but{
+  color: white;
+  background-color: red;
+}
+
+         
+    </style>
+    <body>
+        <h1 style="display: flex;justify-content: center;">Kid's Wardrobe</h1>    
+        <section id="prodct1" class="section-p1">
+            
+                <div class="pro1">
+                    <img src="clothes/kids/pro15.jpeg">
+                    <span><h1>DostiBazaar</h1></span>
+                    <h5>Combo</h5>
+                    <h4>350rs</h4>
+                    <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+                </div>
+            </div>
+    
+            <div class="pro1">
+             <img src="clothes/kids/pro1.jpg"> 
+                <span><h1>DostiBazaar</h1></span>
+                <h5>Frock</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             
+                <img src="clothes/kids/pro2.jpg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Frock</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro3.jpg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Frock</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro4.jpg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Tops</h5>
+                <h4>350rs</h4>
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>   
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro5.jpg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Tops</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro6.jpeg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Tops</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro7.jpeg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Frock</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro8.jpg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>shots</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro9.jpeg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Combo</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro10.webp" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Shoes</h5>
+                <h4>350rs</h4>
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>   
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro11.webp" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Shoes</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro12.webp" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Shoes</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+              <img src="clothes/kids/pro13.jpeg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Combo</h5>
+                <h4>350rs</h4> 
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>  
+            </div>
+            <div class="pro1">
+             <img src="clothes/kids/pro14.jpeg" >
+                 <span><h1>DostiBazaar</h1></span>
+                <h5>Combo</h5>
+                <h4>350rs</h4>
+                <a href="payment.html"><button type="submit" id="but"><h3>Buy</h3></button></a>   
+            </div>
+        </section>
+    </body>
+</head>
+</html>
