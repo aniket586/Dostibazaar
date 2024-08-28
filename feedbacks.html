@@ -20,6 +20,9 @@
         textarea {
             border-radius: 8px;
             padding: 10px;
+            width: 600px;
+            height: 300px;
+            box-sizing: border-box;
         }
 
         #buttons {
@@ -46,18 +49,46 @@
         a h4 {
             text-decoration: none;
             margin-top: 10px;
+            color: white;
         }
 
         #mic-icon {
             width: 50px;
             cursor: pointer;
         }
+
+        /* Media Query for Android Devices */
+        @media only screen and (max-width: 600px) and (-webkit-min-device-pixel-ratio: 1) {
+            #content {
+                padding: 10px;
+            }
+
+            textarea {
+                width: 100%;
+                height: 200px;
+                max-width: 100%;
+            }
+
+            #buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            button {
+                width: 100%;
+                max-width: none;
+            }
+
+            #mic-icon {
+                width: 40px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div id="content">
-        <textarea id="speechInput" placeholder="Spoken text will appear here" style="width: 600px; height: 300px;"></textarea>
+        <textarea id="speechInput" placeholder="Spoken text will appear here"></textarea>
     </div>
 
     <div id="buttons">
@@ -67,7 +98,7 @@
     </div>
     
     <div>
-        <span><a href="index.html"><h4 style="color: white;">Back</h4></a></span>
+        <span><a href="index.html"><h4>Back</h4></a></span>
     </div>
 
     <script>
