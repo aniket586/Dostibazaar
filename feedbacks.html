@@ -1,99 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100vh; /* Use 100% of the viewport height */
-            margin: 0; /* Remove default body margin */
-            padding: 10px; /* Reduced padding for spacing */
-            background: rgb(2, 0, 36);
-            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(21, 29, 32, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
         }
 
         #content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 0.1; /* Allow content to grow and take remaining space */
-            margin-bottom: 10px; /* Reduced margin between text area and buttons */
-          
-            padding: 10px; /* Add some padding for better visibility */
-            border-radius: 5px; /* Optional: Add rounded corners */
+            margin: 20px auto;
         }
 
-        #speechInput {
-            color: rgb(255, 255, 255); /* Semi-transparent black for text color */
-            width: 600px;
-            height: 300px;
-            background-color: transparent; /* Transparent background for the textarea */
-            border: 2px solid white;  /* Remove border */
-            resize: none; /* Disable resizing */
-            padding: 10px; /* Add padding */
-            font-size: 16px; /* Set font size */
-            font-family: Arial, sans-serif; /* Set font family */
+        textarea {
+            border-radius: 8px;
+            padding: 10px;
         }
 
         #buttons {
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 1000px; /* Add margin between text area and buttons */
+            gap: 20px; /* Space between the elements */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #009688;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #00796b;
+        }
+
+        a h4 {
+            text-decoration: none;
+            margin-top: 10px;
         }
 
         #mic-icon {
-            width: 30px; /* Adjust the width of the mic icon */
-            height: 30px; /* Adjust the height of the mic icon */
-            margin-right: 5px; /* Add margin to separate the mic icon from the buttons */
-        }
-
-        #buttons button {
-            margin: 0 5px; /* Reduced margin between buttons */
+            width: 50px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
+
     <div id="content">
         <textarea id="speechInput" placeholder="Spoken text will appear here" style="width: 600px; height: 300px;"></textarea>
     </div>
+
     <div id="buttons">
-        <img id="mic-icon" src="images/mic.svg">
+        <img id="mic-icon" src="images/mic.svg" alt="Mic Icon">
         <button id="startButton">Start</button>
-        <button type="submit" id="submitButton">Submit</button><br>
-        <span><a href="index.html"><h4 style="color: white;">Back</h4></a></span>
+        <button type="submit" id="submitButton">Submit</button>
     </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+    <div>
+        <span><a href="index.html"><h4 style="color: white;">Back</h4></a></span>
+    </div>
+
     <script>
-        const speechConfig = SpeechSDK.SpeechConfig.fromSubscription("39728fbcb5384d9d944f09f4eb489c07", "eastus");
-        const recognizer = new SpeechSDK.SpeechRecognizer(speechConfig);
-
-        document.getElementById("startButton").addEventListener("click", () => {
-            recognizer.startContinuousRecognitionAsync();
+        document.getElementById('submitButton').addEventListener('click', function() {
+            alert('Thank you for your precious feedback!');
+            window.location.href = 'index.html';
         });
-
-        document.getElementById("submitButton").addEventListener("click", () => {
-            alert("Your precious feedback has been sent!");
-        });
-
-        recognizer.recognizing = (s, e) => {
-            document.getElementById("speechInput").value = e.result.text;
-        };
-
-        recognizer.recognized = (s, e) => {
-            if (e.result.reason === SpeechSDK.ResultReason.RecognizedSpeech) {
-                document.getElementById("speechInput").value = e.result.text;
-            }
-        };
-
-        recognizer.canceled = (s, e) => {
-            if (e.reason === SpeechSDK.CancellationReason.Error) {
-                console.error(`Cancellation error: ${e.errorDetails}`);
-            }
-        };
     </script>
+
 </body>
 </html>
